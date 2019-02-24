@@ -16,15 +16,10 @@ public class JConnectedGraph {
     // run(b, d) == false
 
     public static boolean run(JNode source, JNode target) {
-        return hasAConnection(source, target);
-    }
-
-    private static boolean hasAConnection(JNode a, JNode b) {
-
-        if (a.equals(b)) {
+        if (source.equals(target)) {
             return true;
         }
-        return a.edges.stream().anyMatch(i -> hasAConnection(i, b));
+        return source.edges.stream().anyMatch(i -> run(i, target));
     }
 
     public static class JNode {

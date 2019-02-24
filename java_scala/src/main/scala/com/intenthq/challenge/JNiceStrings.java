@@ -28,7 +28,6 @@ public class JNiceStrings {
     private static List<String> vowels = new ArrayList<>(Arrays.asList("a", "e", "i", "o", "u"));
     private static List<String> unacceptedSubStrings = new ArrayList<>(Arrays.asList("ab", "cd", "pq", "xy"));
 
-
     private static boolean stringHasThreeVowels(String inputString) {
         return Math.toIntExact(Stream.of(inputString.split(""))
                 .filter(elem -> vowels.contains(elem)).count()) >= 3;

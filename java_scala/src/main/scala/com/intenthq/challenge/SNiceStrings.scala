@@ -22,22 +22,18 @@ object SNiceStrings {
 //    How many strings are nice?
 
   def stringHasThreeVowels(word: String): Boolean = {
-
     val vowels: List[String] = List("a", "e", "i", "o", "u")
     val found = word.count(letter => vowels.contains(letter.toString))
     found >= 3
   }
 
   def stringContainsUnacceptedSubStrings(word: String): Boolean = {
-
     val unacceptableSubStrings: List[String] = List("ab", "cd", "pq", "xy")
-    val found = unacceptableSubStrings.count(subString => word.contains(subString));
+    val found = unacceptableSubStrings.count(subString => word.contains(subString))
     found == 0
   }
 
   def stringHasADoubleLetter(word: String): Boolean = {
-
-
     for (i <- 0 until word.length - 1) {
       if (word.charAt(i) == word.charAt(i + 1)) {
         return true
@@ -47,7 +43,6 @@ object SNiceStrings {
   }
 
   def isStringNice(str: String): Boolean = {
-
     val hasVowels = stringHasThreeVowels(str)
     val hasUnacceptableSubString = stringContainsUnacceptedSubStrings(str)
     val hasADoubleLetter = stringHasADoubleLetter(str)

@@ -11,7 +11,6 @@ class JConnectedGraphCyclic {
     }
 
     private static boolean hasACyclicConnection(JNode a, JNode b, List<JNode> descendants) {
-
         if (descendants.contains(a)) {
             return false;
         } else if (a.equals(b)) {
