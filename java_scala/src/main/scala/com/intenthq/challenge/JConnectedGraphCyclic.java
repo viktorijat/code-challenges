@@ -1,7 +1,6 @@
 package com.intenthq.challenge;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 class JConnectedGraphCyclic {
@@ -37,7 +36,6 @@ class JConnectedGraphCyclic {
             this.edges = new ArrayList<>();
         }
 
-
         /*
          * The inner class was not able to create a cyclic graph, so I added these methods in order to test
          * that scenario.
@@ -56,5 +54,4 @@ class JConnectedGraphCyclic {
             this.edges = edges;
         }
     }
-
 }
