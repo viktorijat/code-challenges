@@ -3,6 +3,7 @@ package com.intenthq.challenge;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class JNiceStrings {
@@ -25,16 +26,13 @@ public class JNiceStrings {
     //    dvszwmarrgswjxmb is naughty because it contains only one vowel.
     //    How many strings are nice?
 
-    private static List<String> vowels = new ArrayList<>(Arrays.asList("a", "e", "i", "o", "u"));
-    private static List<String> unacceptedSubStrings = new ArrayList<>(Arrays.asList("ab", "cd", "pq", "xy"));
-
     private static boolean stringHasThreeVowels(String inputString) {
         return Math.toIntExact(Stream.of(inputString.split(""))
-                .filter(elem -> vowels.contains(elem)).count()) >= 3;
+                .filter(elem -> Arrays.asList("a", "e", "i", "o", "u").contains(elem)).count()) >= 3;
     }
 
     private static boolean stringDoesNotContainUnacceptedSubStrings(String inputString) {
-        return unacceptedSubStrings.stream().noneMatch(inputString::contains);
+        return Stream.of("ab", "cd", "pq", "xy").noneMatch(inputString::contains);
     }
 
     private static boolean hasADoubleLetter(String inputString) {
@@ -51,7 +49,19 @@ public class JNiceStrings {
                 && hasADoubleLetter(toInspect);
     }
 
+    private static boolean isStringNiceWithRegex(String toInspect) {
+        return Pattern.compile("^(.*[aeiou].*[aeiou].*[aeiou]).*$",
+                Pattern.CASE_INSENSITIVE).matcher(toInspect).matches() &&
+                Pattern.compile("^((?!(ab|cd|pq|xy)).)*$",
+                        Pattern.CASE_INSENSITIVE).matcher(toInspect).matches() &&
+                Pattern.compile("^.*(.)\\1.*$").matcher(toInspect).matches();
+    }
+
     public static int nice(List<String> xs) {
         return Math.toIntExact(xs.stream().filter(JNiceStrings::isStringNice).count());
+    }
+
+    public static int niceRegex(List<String> xs) {
+        return Math.toIntExact(xs.stream().filter(JNiceStrings::isStringNiceWithRegex).count());
     }
 }
