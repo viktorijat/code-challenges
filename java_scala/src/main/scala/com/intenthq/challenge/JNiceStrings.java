@@ -34,8 +34,8 @@ public class JNiceStrings {
                 .filter(elem -> vowels.contains(elem)).count()) >= 3;
     }
 
-    private static boolean stringContainsUnacceptedSubStrings(String inputString) {
-        return unacceptedSubStrings.stream().anyMatch(inputString::contains);
+    private static boolean stringDoesNotContainUnacceptedSubStrings(String inputString) {
+        return unacceptedSubStrings.stream().noneMatch(inputString::contains);
     }
 
     private static boolean hasADoubleLetter(String inputString) {
@@ -48,16 +48,8 @@ public class JNiceStrings {
     }
 
     private static boolean isStringNice(String toInspect) {
-
-        if (!stringHasThreeVowels(toInspect)) {
-            return false;
-        }
-
-        if (stringContainsUnacceptedSubStrings(toInspect)) {
-            return false;
-        }
-
-        return hasADoubleLetter(toInspect);
+        return stringHasThreeVowels(toInspect) && stringDoesNotContainUnacceptedSubStrings(toInspect)
+                && hasADoubleLetter(toInspect);
     }
 
     public static int nice(List<String> xs) {
