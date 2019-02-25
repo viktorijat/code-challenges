@@ -18,7 +18,7 @@ object SConnectedGraph {
     if (source == target) {
       true
     } else {
-      source.edges.forall(i => run(i, target))
+      source.edges.exists(i => run(i, target))
     }
   }
 }
