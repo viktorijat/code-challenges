@@ -52,4 +52,13 @@ object SNiceStrings {
   def nice(xs: List[String]): Int = {
     xs.count(word => isStringNice(word))
   }
+
+  def isStringNiceRegex(str: String): Boolean = {
+    str.matches("^(.*[aeiou].*[aeiou].*[aeiou]).*$") && str.matches("^((?!(ab|cd|pq|xy)).)*$") && str
+      .matches("^.*(.)\\1.*$")
+  }
+
+  def niceRegex(xs: List[String]): Int = {
+    xs.count(word => isStringNice(word))
+  }
 }

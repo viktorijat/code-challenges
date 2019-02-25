@@ -22,6 +22,22 @@ class SNiceStringsSpec extends Specification {
     "dvszwmarrgswjxmb is naughty" in {
       SNiceStrings.nice(List("dvszwmarrgswjxmb")) must_== 0
     }
+
+    "ugknbfddgicrmopn is nice" in {
+      SNiceStrings.niceRegex(List("ugknbfddgicrmopn")) must_== 1
+    }
+    "aaa is nice" in {
+      SNiceStrings.niceRegex(List("aaa")) must_== 1
+    }
+    "jchzalrnumimnmhp is naughty" in {
+      SNiceStrings.niceRegex(List("jchzalrnumimnmhp")) must_== 0
+    }
+    "haegwjzuvuyypxyu is naughty" in {
+      SNiceStrings.niceRegex(List("haegwjzuvuyypxyu")) must_== 0
+    }
+    "dvszwmarrgswjxmb is naughty" in {
+      SNiceStrings.niceRegex(List("dvszwmarrgswjxmb")) must_== 0
+    }
   }
   section("nice")
   section("scala")
